@@ -19,7 +19,6 @@ h1{
     font-weight: 400;
     color:  #7B7B7B;
     margin-bottom: 7px;
-    margin-top: 10px;
 }
 `;
 

@@ -1,5 +1,6 @@
 import { Subtitle } from '../../style/paymentStyle.js';
 import styled from 'styled-components';
+import ActivitiesComponent from './Activities.js';
 
 export default function FilterDaysComponent() {
   return (
@@ -10,6 +11,7 @@ export default function FilterDaysComponent() {
         <Day>dia 2</Day>
         <Day>dia 3</Day>
       </Days>
+      <ActivitiesComponent/>
     </>
   );
 }

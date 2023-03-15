@@ -17,6 +17,7 @@ export default function ActivitiesComponent() {
 
 const All = styled.div`
     display: flex;
+    margin-top: 50px;
     hr{
         border: 1px solid #D7D7D7;
         margin: 9px;
