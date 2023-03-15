@@ -21,8 +21,8 @@ export default function MainAuditorium() {
           </Element>
           <Element>
             <Left>
-              <h2>Minecraft: montando o PC ideal</h2>
-              <h3>09:00 - 10:00</h3>
+              <h2>LoL: montando o PC ideal</h2>
+              <h3>10:00 - 11:00</h3>
             </Left>
             <hr />
             <Rigth>

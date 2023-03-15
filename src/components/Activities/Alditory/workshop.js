@@ -11,7 +11,7 @@ export default function WorkshopRoom() {
           <Element>
             <Left>
               <h2>Palestra y</h2>
-              <h3>09:00 - 11:00</h3>
+              <h3>09:00 - 10:00</h3>
             </Left>
             <hr/>
             <Rigth>
