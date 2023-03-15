@@ -2,16 +2,16 @@ import { Subtitle } from '../../style/paymentStyle.js';
 import styled from 'styled-components';
 import ActivitiesComponent from './Activities.js';
 
-export default function FilterDaysComponent() {
+export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
   return (
     <>
       <Subtitle>Primeiro, filtre pelo dia do evento</Subtitle>
       <Days>
-        <Day>dia 1</Day>
-        <Day>dia 2</Day>
-        <Day>dia 3</Day>
+        <Day onClick={() => setDayEvent(!dayEvent)}>dia 1</Day>
+        <Day onClick={() => setDayEvent(!dayEvent)}>dia 2</Day>
+        <Day onClick={() => setDayEvent(!dayEvent)}>dia 3</Day>
       </Days>
-      <ActivitiesComponent/>
+      {dayEvent && <ActivitiesComponent />}
     </>
   );
 }
@@ -22,7 +22,7 @@ const Days = styled.div`
   justify-content: left;
 `;
 
-const Day = styled.div`
+const Day = styled.button`
   height: 37px;
   width: 131px;
   background-color: #e0e0e0e0;

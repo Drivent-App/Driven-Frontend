@@ -5,9 +5,10 @@ import { getUserTickets } from '../../../services/userTicketApi';
 import useToken from '../../../hooks/useToken';
 import FilterDaysComponent from '../../../components/Activities/FilterComponent';
 import { useState } from 'react';
-
+import ActivitiesComponent from '../../../components/Activities/Activities.js';
 export default function Activities() {
   const { ticket2, setTicket2 } = useContext(AuthContext);
+  const [dayEvent, setDayEvent] = useState(false);
   const [event, setEvent] = useState({});
   const token = useToken();
 
@@ -19,7 +20,7 @@ export default function Activities() {
       console.log('erro', err.response.data);
     }
   }, []);
-  
+
   if (ticket2.status === undefined) {
     return (
       <Text>
@@ -50,7 +51,10 @@ export default function Activities() {
           <p>Sua modalidade de ingresso não necessita escolher atividade. Você terá acesso a todas as atividades.</p>
         </Text>
       )}
-      <FilterDaysComponent />
+      {ticket2.status === 'PAID' && !ticket2.TicketType.isRemote && (
+        <FilterDaysComponent dayEvent={dayEvent} setDayEvent={setDayEvent} />
+        // { dayEvent === 'true' && ( <ActivitiesComponent />)}
+      )}
     </>
   );
 }
