@@ -3,9 +3,12 @@ import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../../contexts/Auth';
 import { getUserTickets } from '../../../services/userTicketApi';
 import useToken from '../../../hooks/useToken';
+import FilterDaysComponent from '../../../components/Activities/FilterComponent';
+import { useState } from 'react';
 
 export default function Activities() {
   const { ticket2, setTicket2 } = useContext(AuthContext);
+  const [event, setEvent] = useState({});
   const token = useToken();
 
   useEffect(async() => {
@@ -16,7 +19,7 @@ export default function Activities() {
       console.log('erro', err.response.data);
     }
   }, []);
-
+  
   if (ticket2.status === undefined) {
     return (
       <Text>
@@ -24,6 +27,15 @@ export default function Activities() {
       </Text>
     );
   }
+  // useEffect(async() => {
+  //   try {
+  //     const promiseEvent = await ;
+  //     setEvent(promiseEvent);
+  //     console.log(event);
+  //   } catch (err) {
+  //     console.log();
+  //   }
+  // }, []);
 
   return (
     <>
@@ -38,6 +50,7 @@ export default function Activities() {
           <p>Sua modalidade de ingresso não necessita escolher atividade. Você terá acesso a todas as atividades.</p>
         </Text>
       )}
+      <FilterDaysComponent />
     </>
   );
 }
