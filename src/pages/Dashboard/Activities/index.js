@@ -52,8 +52,7 @@ export default function Activities() {
         </Text>
       )}
       {ticket2.status === 'PAID' && !ticket2.TicketType.isRemote && (
-        <FilterDaysComponent dayEvent={dayEvent} setDayEvent={setDayEvent} />
-        // { dayEvent === 'true' && ( <ActivitiesComponent />)}
+        <FilterDaysComponent dayEvent={dayEvent} setDayEvent={setDayEvent} />        
       )}
     </>
   );

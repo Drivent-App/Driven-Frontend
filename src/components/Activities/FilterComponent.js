@@ -1,8 +1,20 @@
 import { Subtitle } from '../../style/paymentStyle.js';
 import styled from 'styled-components';
 import ActivitiesComponent from './Activities.js';
+import { useEffect, useState } from 'react';
+import useActivities from '../../hooks/api/useActivities.js';
 
 export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
+  const [allActivities, setAllActivities] = useState({});
+
+  useEffect(async() => {
+    try {
+      const activities = await useActivities();
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }, []);
+
   return (
     <>
       <Subtitle>Primeiro, filtre pelo dia do evento</Subtitle>
