@@ -4,13 +4,13 @@ import ActivitiesComponent from './Activities.js';
 import { useEffect, useState } from 'react';
 import useActivities from '../../hooks/api/useActivities.js';
 
-export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
+export default async function FilterDaysComponent({ dayEvent, setDayEvent }) {
   const [allActivities, setAllActivities] = useState({});
 
   useEffect(async() => {
     try {
       const promise = await useActivities();
-      setAllActivities(promise)
+      setAllActivities(promise);
     } catch (error) {
       console.log(error.response.data);
     }
