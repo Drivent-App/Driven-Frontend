@@ -9,7 +9,8 @@ export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
 
   useEffect(async() => {
     try {
-      const activities = await useActivities();
+      const promise = await useActivities();
+      setAllActivities(promise)
     } catch (error) {
       console.log(error.response.data);
     }
@@ -19,6 +20,7 @@ export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
     <>
       <Subtitle>Primeiro, filtre pelo dia do evento</Subtitle>
       <Days>
+        
         <Day onClick={() => setDayEvent(!dayEvent)}>dia 1</Day>
         <Day onClick={() => setDayEvent(!dayEvent)}>dia 2</Day>
         <Day onClick={() => setDayEvent(!dayEvent)}>dia 3</Day>
