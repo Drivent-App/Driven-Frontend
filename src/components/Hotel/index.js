@@ -80,7 +80,7 @@ export default function HotelComponent() {
           );
         })}
       </DivHotelOptions>
-      {hotelWRoom.length === 0 ? (
+      {hotelWRoom.length  === 0 ? (
         ''
       ) : showRooms ? (
         <>
