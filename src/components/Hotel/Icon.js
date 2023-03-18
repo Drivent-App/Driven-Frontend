@@ -3,19 +3,19 @@ import { getRoomBookings } from '../../services/hotelApi';
 import useToken from '../../hooks/useToken';
 import { AuthContext } from '../../contexts/Auth';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 
 export default function IconComponent(props) {
   const {  setShowBtn, roomClicked, setRoomClicked } = useContext(AuthContext);
   const [ people, setPeople ] = useState(0);
   const [ available, setAvailable ] = useState(true);
-  const [ click, setClick ] = useState(false);
 
   function handleClick(room) {
     setRoomClicked(room);
     setShowBtn(true);
   }
 
-  if(roomClicked == {}) {
+  if(roomClicked === {}) {
     setShowBtn(false);
   }
 
@@ -52,7 +52,9 @@ export default function IconComponent(props) {
     else{
       setAvailable(true);
     }
-  }).catch((res) => {console.log(res);});
+  }).catch((res) => {
+    toast(res);
+  });
 
   return(
     <>
