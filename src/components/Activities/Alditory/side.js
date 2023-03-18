@@ -14,7 +14,7 @@ export default function SideAuditorium() {
             </Left>
             <hr/>
             <Rigth>
-              <img src={enter}/>
+              <img src={enter} alt="Ainda com vagas"/>
               <h2>27 vagas</h2>
             </Rigth>
           </Element2>

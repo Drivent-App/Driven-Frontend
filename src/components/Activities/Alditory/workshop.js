@@ -15,7 +15,7 @@ export default function WorkshopRoom() {
             </Left>
             <hr/>
             <Rigth>
-              <img src={enter}/>
+              <img src={enter} alt="Ainda com vagas"/>
               <h2>27 vagas</h2>
             </Rigth>
           </Element>
@@ -26,7 +26,7 @@ export default function WorkshopRoom() {
             </Left>
             <hr/>
             <Rigth>
-              <img src={out}/>
+              <img src={out} alt="Sem vagas"/>
               <h3>Esgotado</h3>
             </Rigth>
           </Element>

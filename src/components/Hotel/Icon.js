@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState, useContext } from 'react';
 import { getRoomBookings } from '../../services/hotelApi';
 import useToken from '../../hooks/useToken';
-import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import styled from 'styled-components';
 
 export default function IconComponent(props) {
-  const {  showBtn, setShowBtn, roomClicked, setRoomClicked } = useContext(AuthContext);
+  const {  setShowBtn, roomClicked, setRoomClicked } = useContext(AuthContext);
   const [ people, setPeople ] = useState(0);
   const [ available, setAvailable ] = useState(true);
 

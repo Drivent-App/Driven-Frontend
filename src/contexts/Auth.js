@@ -14,6 +14,7 @@ export default function AuthProvider({ children }) {
   const [roomClicked, setRoomClicked] = useState({});
   const [showBtn, setShowBtn] = useState(false);
   const [change, setChange] = useState(false);
+  const [filteredActivities, setFilteredActivities] = useState([]);
   return (
     <AuthContext.Provider
       value={{
@@ -38,7 +39,9 @@ export default function AuthProvider({ children }) {
         showBtn,
         setShowBtn,
         change,
-        setChange
+        setChange,
+        filteredActivities,
+        setFilteredActivities
       }}
     >
       {children}

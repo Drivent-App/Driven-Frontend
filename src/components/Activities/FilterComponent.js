@@ -1,14 +1,16 @@
 import { Subtitle } from '../../style/paymentStyle.js';
 import styled from 'styled-components';
 import ActivitiesComponent from './Activities.js';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import useActivities from '../../hooks/api/useActivities.js';
 import useActivitiesByDay from '../../hooks/api/useActivitiesByDay.js';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
+import { AuthContext } from '../../contexts/Auth.js';
+
 export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
+  const { filteredActivities, setFilteredActivities } = useContext(AuthContext);
   const [allActivities, setAllActivities] = useState([]);
-  const [filteredActivities, setFilteredActivities] = useState([]);
   const { activities } = useActivities();
   const { getActivitiesByDay } = useActivitiesByDay();
   useEffect(() => {
@@ -25,7 +27,6 @@ export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
     const day = new Date(element.day);
     const finalDay = dayjs(day).locale('pt-br').format('ddd, DD/MM');
     if (!transformedDay.includes(finalDay)) {
-      console.log(day);
       dayActivity.push(element.day);
       transformedDay.push(finalDay);
     }
@@ -40,7 +41,7 @@ export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
       console.log(error.response.data);
     }
   }
-  console.log(filteredActivities);
+  console.log('tela Pedro', filteredActivities);
   return (
     <>
       <Subtitle>Primeiro, filtre pelo dia do evento</Subtitle>

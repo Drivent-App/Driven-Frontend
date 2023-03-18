@@ -61,11 +61,11 @@ export default function CreditCard(props) {
 
     setLoading(true);
     const promise = axios.post('http://localhost:4000/payments/process', body, config); //trocar URL depois
-    promise.then((res) => {
+    promise.then(() => {
       setPayment(true);
       setLoading(false);
     });
-    promise.catch((res) => {
+    promise.catch(() => {
       toast('Sua forma de pagamento foi recusada, tente novamente');
       setLoading(false);
     });

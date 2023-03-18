@@ -6,7 +6,7 @@ import { Box, Image, DivDesc, Name, Desc, DescValue } from '../Auth';
 
 export default function HotelOptions(props) {
   const token = useToken();
-  const { hotel, setHotel, showRooms, setShowRooms, hotelWRoom, setHotelWRoom,  showBtn, setShowBtn } = useContext(AuthContext);
+  const { hotel, setHotel, setShowRooms, setHotelWRoom, setShowBtn } = useContext(AuthContext);
 
   function handleClick() {
     setHotel(props.hotel);
