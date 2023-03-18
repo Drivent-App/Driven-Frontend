@@ -23,7 +23,6 @@ export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
   const transformedDay = [];
   allActivities.map((element) => {
     const day = new Date(element.day);
-
     const finalDay = dayjs(day).locale('pt-br').format('ddd, DD/MM');
     if (!transformedDay.includes(finalDay)) {
       console.log(day);
