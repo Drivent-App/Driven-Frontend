@@ -1,10 +1,9 @@
 import HotelOptions from '../../components/Hotel/HotelOptions';
 import { Subtitle } from '../../style/paymentStyle';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import useToken from '../../hooks/useToken';
-import { BookRoom, getHotels, GetResume, getRoomBookings, updateRoom } from '../../services/hotelApi';
-import { useContext } from 'react';
+import { BookRoom, getHotels, GetResume, updateRoom } from '../../services/hotelApi';
 import { AuthContext } from '../../contexts/Auth';
 import IconComponent from './Icon';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +25,7 @@ export default function HotelComponent() {
         navigate('/dashboard/resume');
       }
     } catch (err) {
-      console.log('erro', err.response.data);
+      alert('erro', err.response.data);
     }
   }, []);
 
@@ -37,19 +36,18 @@ export default function HotelComponent() {
       navigate('/dashboard/resume');
       toast('Reserva trocada com sucesso');
     } catch (err) {
-      console.log(err);
+      alert(err);
       toast('Algo deu errado na sua troca');
     }
   }
 
   function reserveRoom(token, roomId) {
     BookRoom(token, roomId)
-      .then((res) => {
-        console.log('res index', res);
+      .then(() => {
         navigate('/dashboard/resume');
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   }
 
@@ -61,7 +59,7 @@ export default function HotelComponent() {
     });
 
     promiseHotel.catch((err) => {
-      console.log(err.response.status);
+      alert(err.response.status);
     });
   }, []);
 

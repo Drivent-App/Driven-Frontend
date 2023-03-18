@@ -5,11 +5,10 @@ import { getUserTickets } from '../../../services/userTicketApi';
 import useToken from '../../../hooks/useToken';
 import FilterDaysComponent from '../../../components/Activities/FilterComponent';
 import { useState } from 'react';
-import ActivitiesComponent from '../../../components/Activities/Activities.js';
+
 export default function Activities() {
   const { ticket2, setTicket2 } = useContext(AuthContext);
-  const [dayEvent, setDayEvent] = useState(false);
-  const [event, setEvent] = useState({});
+  const [dayEvent, setDayEvent] = useState(undefined);
   const token = useToken();
 
   useEffect(async() => {
@@ -28,16 +27,7 @@ export default function Activities() {
       </Text>
     );
   }
-  // useEffect(async() => {
-  //   try {
-  //     const promiseEvent = await ;
-  //     setEvent(promiseEvent);
-  //     console.log(event);
-  //   } catch (err) {
-  //     console.log();
-  //   }
-  // }, []);
-
+ 
   return (
     <>
       <Title>Escolha de atividades</Title>

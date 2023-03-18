@@ -1,29 +1,62 @@
 import { Subtitle } from '../../style/paymentStyle.js';
 import styled from 'styled-components';
 import ActivitiesComponent from './Activities.js';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import useActivities from '../../hooks/api/useActivities.js';
+import useActivitiesByDay from '../../hooks/api/useActivitiesByDay.js';
+import dayjs from 'dayjs';
+import 'dayjs/locale/pt-br';
+import { AuthContext } from '../../contexts/Auth.js';
 
-export default async function FilterDaysComponent({ dayEvent, setDayEvent }) {
-  const [allActivities, setAllActivities] = useState({});
+export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
+  const { filteredActivities, setFilteredActivities } = useContext(AuthContext);
+  const [allActivities, setAllActivities] = useState([]);
+  const { activities } = useActivities();
+  const { getActivitiesByDay } = useActivitiesByDay();
+  useEffect(() => {
+    if (activities) {
+      setAllActivities(activities);
+    }
+  }, [activities]);
+  if (!activities) {
+    return <></>;
+  }
+  const dayActivity = [];
+  const transformedDay = [];
+  allActivities.map((element) => {
+    const day = new Date(element.day);
+    const finalDay = dayjs(day).locale('pt-br').format('ddd, DD/MM');
+    if (!transformedDay.includes(finalDay)) {
+      dayActivity.push(element.day);
+      transformedDay.push(finalDay);
+    }
+  });
 
-  useEffect(async() => {
+  async function activitesByDay(day, dayActivity) {
+    setDayEvent(day);
     try {
-      const promise = await useActivities();
-      setAllActivities(promise);
+      const activities = await getActivitiesByDay(dayActivity);
+      setFilteredActivities(activities);
     } catch (error) {
       console.log(error.response.data);
     }
-  }, []);
-
+  }
+  console.log('tela Pedro', filteredActivities);
   return (
     <>
       <Subtitle>Primeiro, filtre pelo dia do evento</Subtitle>
       <Days>
-        
-        <Day onClick={() => setDayEvent(!dayEvent)}>dia 1</Day>
-        <Day onClick={() => setDayEvent(!dayEvent)}>dia 2</Day>
-        <Day onClick={() => setDayEvent(!dayEvent)}>dia 3</Day>
+        {transformedDay.map((element, index) => {
+          return (
+            <Day
+              key={index}
+              onClick={() => activitesByDay(element, dayActivity[index])}
+              dayEvent={dayEvent === element}
+            >
+              {element}
+            </Day>
+          );
+        })}
       </Days>
       {dayEvent && <ActivitiesComponent />}
     </>
@@ -39,7 +72,7 @@ const Days = styled.div`
 const Day = styled.button`
   height: 37px;
   width: 131px;
-  background-color: #e0e0e0e0;
+  background-color: ${(props) => (props.dayEvent ? '#FFD37D' : '#e0e0e0e0')};
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   border-radius: 4px;

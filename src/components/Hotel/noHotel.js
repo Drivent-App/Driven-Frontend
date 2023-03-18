@@ -12,7 +12,6 @@ export default function NoHotel() {
     const promise = getHotelInformation(token);
 
     promise.then((res) => {
-      console.log(res);
       setTicketType(res.ticketTypeId);
     });
 

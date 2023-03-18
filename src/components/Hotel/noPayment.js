@@ -3,7 +3,6 @@ import useToken from '../../hooks/useToken';
 import { useEffect, useState } from 'react';
 import HotelComponent from '.';
 import { getHotelInformation } from '../../services/paymentApi';
-import Resume from './resume';
 
 export default function NoPayment() {
   const token = useToken();

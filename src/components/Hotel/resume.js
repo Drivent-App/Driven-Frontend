@@ -1,4 +1,4 @@
-import { Box, Image, DivDesc, Name, Desc, DescValue, ReserveBtn, HotelBox } from '../Auth';
+import { Image, DivDesc, Name, Desc, DescValue, ReserveBtn, HotelBox } from '../Auth';
 import { GetResume } from '../../services/hotelApi';
 import useToken from '../../hooks/useToken';
 import { useContext, useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ export default function Resume() {
   const { setChange } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  function getStringForCapacity() {
+  function  getStringForCapacity() {
     switch (resumeRoom.capacity) {
     case 1:
       return 'Singles';
@@ -32,16 +32,12 @@ export default function Resume() {
     const promise = GetResume(token);
 
     promise.then((res) => {
-      console.log(res);
-
       setResumeRoom(res.Room);
-      console.log(resumeRoom);
       setResumeHotel(res.Hotel);
-      console.log(resumeHotel);
     });
 
     promise.catch((err) => {
-      alert('erro', err.response.data);
+      alert(err.response.data);
     });
   }, []);
 
