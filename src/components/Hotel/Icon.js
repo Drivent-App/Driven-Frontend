@@ -8,7 +8,6 @@ export default function IconComponent(props) {
   const {  setShowBtn, roomClicked, setRoomClicked } = useContext(AuthContext);
   const [ people, setPeople ] = useState(0);
   const [ available, setAvailable ] = useState(true);
-  const [ click, setClick ] = useState(false);
 
   function handleClick(room) {
     setRoomClicked(room);
