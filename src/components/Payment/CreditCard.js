@@ -38,7 +38,8 @@ export default function CreditCard(props) {
   useEffect(async() => {
     try {
       setLoading(true);
-      const promise = await axios.get(`http://localhost:4000/payments?ticketId=${props.ticketPaid}`, config);
+      // ARRUMAR AQUI
+      /* const promise = await axios.get(`http://localhost:4000/payments?ticketId=${props.ticketPaid}`, config); */
       setPayment(true);
       setLoading(false);
     } catch (err) {

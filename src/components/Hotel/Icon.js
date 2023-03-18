@@ -15,7 +15,7 @@ export default function IconComponent(props) {
     setShowBtn(true);
   }
 
-  if(roomClicked == {}) {
+  if(roomClicked  === {}) {
     setShowBtn(false);
   }
 
