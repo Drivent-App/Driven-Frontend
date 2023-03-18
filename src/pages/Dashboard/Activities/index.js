@@ -8,7 +8,7 @@ import { useState } from 'react';
 import ActivitiesComponent from '../../../components/Activities/Activities.js';
 export default function Activities() {
   const { ticket2, setTicket2 } = useContext(AuthContext);
-  const [dayEvent, setDayEvent] = useState(false);
+  const [dayEvent, setDayEvent] = useState(undefined);
   const [event, setEvent] = useState({});
   const token = useToken();
 
@@ -28,16 +28,7 @@ export default function Activities() {
       </Text>
     );
   }
-  // useEffect(async() => {
-  //   try {
-  //     const promiseEvent = await ;
-  //     setEvent(promiseEvent);
-  //     console.log(event);
-  //   } catch (err) {
-  //     console.log();
-  //   }
-  // }, []);
-
+ 
   return (
     <>
       <Title>Escolha de atividades</Title>
