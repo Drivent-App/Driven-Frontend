@@ -9,6 +9,7 @@ export default function IconComponent(props) {
   const {  showBtn, setShowBtn, roomClicked, setRoomClicked } = useContext(AuthContext);
   const [ people, setPeople ] = useState(0);
   const [ available, setAvailable ] = useState(true);
+  const [ click, setClick ] = useState(false);
 
   function handleClick(room) {
     setRoomClicked(room);
@@ -22,7 +23,9 @@ export default function IconComponent(props) {
   let capacityCss = {
     icon1: 'none',
     icon2: 'none',
-    icon3: 'none'
+    icon3: 'none',
+    icon4: 'none',
+    icon5: 'none',
   };
 
   if(props.room.capacity >= 1) {
@@ -33,6 +36,12 @@ export default function IconComponent(props) {
   }
   if(props.room.capacity >= 3) {
     capacityCss.icon3 = 'inherit';
+  }
+  if(props.room.capacity >= 4) {
+    capacityCss.icon4 = 'inherit';
+  }
+  if(props.room.capacity >= 5) {
+    capacityCss.icon5 = 'inherit';
   }
 
   const token = useToken();
@@ -51,9 +60,11 @@ export default function IconComponent(props) {
       <RoomCard onClick={() => handleClick(props.room)} clicked={ roomClicked.id === props.room.id } available={available}>
         <RoomName>{props.room.name}</RoomName>
         <Icon>
-          <ion-icon id="icon1" name={people >= 1 || roomClicked.id === props.room.id  ? 'person' : 'person-outline'} style={{ display: capacityCss.icon1, color: roomClicked.id === props.room.id ? '#FF4791': '' }}/>
-          <ion-icon id="icon2" name={people >= 2 ? 'person' : 'person-outline'} style={{ display: capacityCss.icon2 }}/>
-          <ion-icon id="icon3" name={people >= 3 ? 'person' : 'person-outline'} style={{ display: capacityCss.icon3 }}/>
+          <ion-icon id="icon1" name={people >= 1 || (roomClicked.id === props.room.id && people < 1) ? 'person' : 'person-outline'} style={{ display: capacityCss.icon1, color: roomClicked.id === props.room.id && people < 1 ? '#FF4791': '' }}/>
+          <ion-icon id="icon2" name={people >= 2 || (roomClicked.id === props.room.id && (people > 0 && people < 2)) ? 'person' : 'person-outline'} style={{ display: capacityCss.icon2, color: roomClicked.id === props.room.id && (people > 0 && people < 2) ? '#FF4791': '' }}/>
+          <ion-icon id="icon3" name={people >= 3 || (roomClicked.id === props.room.id && (people > 1 && people < 3)) ? 'person' : 'person-outline'} style={{ display: capacityCss.icon3, color: roomClicked.id === props.room.id && (people > 1 && people < 3) ? '#FF4791': '' }}/>
+          <ion-icon id="icon4" name={people >= 4 || (roomClicked.id === props.room.id && (people > 2 && people < 4)) ? 'person' : 'person-outline'} style={{ display: capacityCss.icon4, color: roomClicked.id === props.room.id && (people > 2 && people < 4) ? '#FF4791': '' }}/>
+          <ion-icon id="icon5" name={people >= 5 || (roomClicked.id === props.room.id && (people > 3 && people < 5)) ? 'person' : 'person-outline'} style={{ display: capacityCss.icon5, color: roomClicked.id === props.room.id && (people > 3 && people < 5) ? '#FF4791': ''  }}/>
         </Icon>
       </RoomCard>
     </>
@@ -73,6 +84,7 @@ const RoomName = styled.h3`
 `;
 
 const RoomCard = styled.div`
+  min-width: 190px;
   width: 190px;
   height: 45px;
   
@@ -82,6 +94,7 @@ const RoomCard = styled.div`
   border-radius: 10px;
   
   margin-right: 14px;
+  margin-bottom: 10px;
 
   border: ${(props) => (props.clicked ? 'none' : '1px solid #cecece' )};
   background-color: ${(props) => (props.clicked ? '#FFEED2' : '#EBEBEB')};
