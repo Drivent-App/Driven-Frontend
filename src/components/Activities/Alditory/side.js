@@ -1,4 +1,4 @@
-import { Auditory, Element2, Left, Rigth, All } from '../../../style/activetiesStyle';
+import { Auditory, Element, Left, Rigth, All } from '../../../style/activetiesStyle';
 import enter from '../../../assets/images/enter.png';
 /* import out from '../../../assets/images/outlined.png'; */
 import { AuthContext } from '../../../contexts/Auth';
@@ -18,7 +18,10 @@ export default function SideAuditorium() {
             local
               ?
               local.map((l) =>
-                <Element2 key={l.id}>
+                <Element
+                  key={l.id}
+                  time={parseInt(l.timeEnd)- parseInt(l.timeStart) == 1 ? 1 : 2}
+                >
                   <Left>
                     <h2>{l.lectureName}</h2>
                     <h3>{l.timeStart} - {l.timeEnd}</h3>
@@ -28,7 +31,7 @@ export default function SideAuditorium() {
                     <img src={enter} alt="Vaga disponível" /* alterar aqui *//>
                     <h2>{l.numberVacancies} {l.numberVacancies === 1 ? 'vaga' : 'vagas'}</h2>
                   </Rigth>
-                </Element2>
+                </Element>
               )
               :
               <h1>Sem palestras</h1>

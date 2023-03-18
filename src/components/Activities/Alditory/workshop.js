@@ -17,7 +17,10 @@ export default function WorkshopRoom() {
             local
               ?
               local.map((l) =>
-                <Element key={l.id}>
+                <Element 
+                  key={l.id}
+                  time={parseInt(l.timeEnd)- parseInt(l.timeStart) == 1 ? 1 : 2}
+                >
                   <Left>
                     <h2>{l.lectureName}</h2>
                     <h3>{l.timeStart} - {l.timeEnd}</h3>

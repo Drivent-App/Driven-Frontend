@@ -25,7 +25,7 @@ h1{
 export const Element = styled.div`
 background-color:  #F1F1F1;
 width: 265px;
-height: 79px;
+height: ${props => props.time == 1 ? '79px' : '168px'};
 border-radius: 5px;
 display: flex;
 margin-top: 10px;
