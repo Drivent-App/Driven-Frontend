@@ -20,7 +20,7 @@ export default function MainAuditorium() {
               local.map((l) =>
                 <Element
                   key={l.id}
-                  time={parseInt(l.timeEnd)- parseInt(l.timeStart) == 1 ? 1 : 2}
+                  time={parseInt(l.timeEnd)- parseInt(l.timeStart) === 1 ? 1 : 2}
                 >
                   <Left>
                     <h2>{l.lectureName}</h2>
