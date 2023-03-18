@@ -21,11 +21,11 @@ export default function SideAuditorium() {
                 <Element2 key={l.id}>
                   <Left>
                     <h2>{l.lectureName}</h2>
-                    <h3>{l.timeStart}</h3>
+                    <h3>{l.timeStart} - {l.timeEnd}</h3>
                   </Left>
                   <hr />
                   <Rigth>
-                    <img src={enter} /* alterar aqui *//>
+                    <img src={enter} alt="Vaga disponível" /* alterar aqui *//>
                     <h2>{l.numberVacancies} {l.numberVacancies === 1 ? 'vaga' : 'vagas'}</h2>
                   </Rigth>
                 </Element2>

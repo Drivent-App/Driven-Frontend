@@ -7,7 +7,7 @@ import { useContext } from 'react';
 export default function WorkshopRoom() {
   const { filteredActivities } = useContext(AuthContext);
 
-  let local = filteredActivities.filter((el) => el.local === 'Auditório Principal');
+  let local = filteredActivities.filter((el) => el.local === 'Sala de Workshop');
   return(
     <>
       <Auditory>
@@ -20,11 +20,11 @@ export default function WorkshopRoom() {
                 <Element key={l.id}>
                   <Left>
                     <h2>{l.lectureName}</h2>
-                    <h3>{l.timeStart}</h3>
+                    <h3>{l.timeStart} - {l.timeEnd}</h3>
                   </Left>
                   <hr />
                   <Rigth>
-                    <img src={enter} /* alterar aqui *//>
+                    <img src={enter} alt="Vaga disponível" /* alterar aqui *//>
                     <h2>{l.numberVacancies} {l.numberVacancies === 1 ? 'vaga' : 'vagas'}</h2>
                   </Rigth>
                 </Element>
