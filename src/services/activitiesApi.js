@@ -17,3 +17,16 @@ export async function getActivitiesByDay(token, params) {
   });
   return response.data;
 }
+
+export async function postActivity(token, id) {
+  const response = await api.post(
+    '/activities/',
+    { activityId: id },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return response.data;
+}
