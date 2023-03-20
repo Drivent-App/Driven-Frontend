@@ -23,7 +23,7 @@ h1{
 `;
 
 export const Element = styled.div`
-background-color:  #F1F1F1;
+background-color: ${props => props.green ? '#D0FFDB' : '#F1F1F1'};
 width: 265px;
 height: ${props => props.time === 1 ? '79px' : '168px'};
 border-radius: 5px;
@@ -65,7 +65,7 @@ font-size: 9px;
 font-weight: 400;
 h2{
     margin-top: 5px;
-    color:  #078632;
+    color: ${props => props.red ? 'red' : '#078632'};
 }
 h3{
     margin-top: 5px;

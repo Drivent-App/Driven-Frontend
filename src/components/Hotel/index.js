@@ -24,9 +24,7 @@ export default function HotelComponent() {
       if (!change) {
         navigate('/dashboard/resume');
       }
-    } catch (err) {
-      alert('erro', err.response.data);
-    }
+    } catch (err) {}
   }, []);
 
   async function newReservation(token, roomId) {

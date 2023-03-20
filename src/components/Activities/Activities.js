@@ -2,14 +2,31 @@ import styled from 'styled-components';
 import MainAuditorium from './Alditory/principal';
 import SideAuditorium from './Alditory/side';
 import WorkshopRoom from './Alditory/workshop';
+import useToken from '../../hooks/useToken';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function ActivitiesComponent() {
+  const token = useToken();
+  const [userActivities, setUserActivities] = useState([]);
+
+  useEffect(() => {
+    const promise = axios.get('http://localhost:4000/userActivities', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    promise.then((res) => {
+      setUserActivities(res.data);
+    });
+  }, [userActivities]);
+
   return(
     <>
       <All>
-        <MainAuditorium/>
-        <SideAuditorium/>
-        <WorkshopRoom/>
+        <MainAuditorium userActivities={userActivities} setUserActivities={setUserActivities}/>
+        <SideAuditorium userActivities={userActivities} setUserActivities={setUserActivities}/>
+        <WorkshopRoom userActivities={userActivities} setUserActivities={setUserActivities}/>
       </All>
     </>
   );

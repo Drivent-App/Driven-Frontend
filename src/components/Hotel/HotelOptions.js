@@ -35,17 +35,19 @@ export default function HotelOptions(props) {
         nome.push('Triple');
       }
       if(room.capacity >= 4 && !nome.includes('Quadruple')) {
-        nome.push('Quadrupĺe');
+        nome.push('Quadruple');
       }
       if(room.capacity >= 5 && !nome.includes('Quintuple')) {
         nome.push('Quintuple');
       }
+      return teste;
     });
     rooms.map((room) => {
       getRoomBookings(token, room.id).then((response) => {
         teste2 += response.length;
         setBooking(teste2);
       });
+      return booking;
     });
     setRoomName(nome.join(', '));
     setCapacity(teste);

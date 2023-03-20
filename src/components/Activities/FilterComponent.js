@@ -41,7 +41,7 @@ export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
       console.log(error.response.data);
     }
   }
-  console.log('tela Pedro', filteredActivities);
+  
   return (
     <>
       <Subtitle>Primeiro, filtre pelo dia do evento</Subtitle>
@@ -58,7 +58,7 @@ export default function FilterDaysComponent({ dayEvent, setDayEvent }) {
           );
         })}
       </Days>
-      {dayEvent && <ActivitiesComponent />}
+      {dayEvent && <ActivitiesComponent activities={ activities }/>}
     </>
   );
 }
